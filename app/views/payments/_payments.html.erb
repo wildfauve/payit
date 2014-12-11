@@ -1,0 +1,30 @@
+<table>
+  <thead>
+    <tr>
+      <th>Amount</th>
+      <th>Payee</th>
+      <th>Due Date</th>      
+      <th>Action</th>
+    </tr>
+  </thead>
+   <tbody>
+      <% @payments.each do |pay| %>
+         <tr>
+            <td>
+               <%= number_to_currency(pay.amt)%>
+            </td>
+            <td>
+               <%= pay.account.payee.name%>
+               <div class="label"><%= pay.account.name%></div>
+            </td>
+            <td>
+               <%= pay.due_date%>
+            </td>
+            <td>
+               <%= link_to "edit", edit_payment_path(pay), class: "button small"%>
+            </td>            
+         </tr>
+      <% end %>     
+   </tbody>
+</table>
+

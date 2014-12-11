@@ -1,0 +1,28 @@
+<table>
+  <thead>
+    <tr>
+      <th>Payee</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+   <tbody>
+      <% @payees.each do |payee| %>
+         <tr>
+            <td><%= payee.name%>
+               <dl class="sub-nav">   
+                  <dt>Accounts</dt>
+                  <% payee.accounts.each do |acct|%>
+                     <dd class="active"><%= link_to acct.name, edit_payee_account_path(payee, acct) %></a></h4>
+                  <% end %>
+               </dl>      
+            </td>
+            
+            <td>
+               <%= link_to "edit", edit_payee_path(payee), class: "button small"%>
+               <%= link_to "New Account", new_payee_account_path(payee), class: "button small"%>               
+            </td>            
+         </tr>
+      <% end %>     
+   </tbody>
+</table>
+

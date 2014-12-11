@@ -1,0 +1,12 @@
+<div class="row">
+   <div class="icon-bar large-vertical four-up">
+      <%= link_to("#", class: "item") do %>
+         <i class="fi-widget"></i>
+         <label><%= @current_user_proxy.name%></label>
+      <% end %>
+      <%= link_to(notes_path, class: "item") do %>
+         <i class="fi-page-multiple"></i>
+         <label>Notes</label>
+      <% end %>
+   </div>
+</div>

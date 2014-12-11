@@ -1,0 +1,22 @@
+ <div class="icon-bar six-up">
+   <a class="item">
+     <i class="fi-home"></i>
+     <label>Home</label>
+   </a>
+  <%= link_to(payees_path, class: "item") do %>
+    <i class="fi-torso"></i>
+    <label>Payees</label>
+  <% end %>   
+  <%= link_to(payments_path, class: "item") do %>
+    <i class="fi-dollar"></i>
+    <label>Payments</label>
+  <% end %>     
+  <%= link_to("#", method: :put, class: "item") do %>
+    <i class="fi-lock"></i>
+    <label>Logout</label>
+  <% end %>
+  <%= link_to('/auth/evernote', class: "item") do %>
+    <i class="fi-social-evernote"></i>
+    <label>Login</label>
+  <% end %>      
+ </div>

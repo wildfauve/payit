@@ -1,0 +1,32 @@
+<%= form_for(@payment, html: { class: "custom"}) do |f| %>
+   <div class="row">
+     <div class="small-3 columns">
+       <%= f.label :amount, class: "right inline"%>
+     </div>
+     <div class="small-9 columns">
+       <%= f.number_field(:amt, min: 0.10, step: 0.01) %>
+     </div> 
+   </div>
+   <div class="row">   
+     <div class="small-3 columns">
+        <%= f.label :account, class: "right inline"%>
+     </div>
+     <div class="small-9 columns">
+        <%= select(:payment, :account, options_for_select(account_selector, @payment.account.id), {include_blank: 'None'}) %>
+     </div> 
+   </div>
+   <div class="row">   
+     <div class="small-3 columns">
+        <%= f.label :due_date, class: "right inline"%>
+     </div>
+     <div class="small-9 columns">
+        <%= f.text_field :due_date, :id => "date-picker", :placeholder => "New Date" %>
+     </div> 
+   </div>
+   <div class="row">
+     <div class="small-10 small-offset-2 columns">
+       <%= f.submit 'Submit', :class => 'button small' %>
+     </div>
+   </div>
+<% end %>
+
