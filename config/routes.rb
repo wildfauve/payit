@@ -11,6 +11,12 @@ Rails.application.routes.draw do
     end
     
     
-    resources :payments
+    resources :payments do
+      collection do
+        get 'filter_list'
+        post 'filter_search'
+      end
+    end
+    
     
 end

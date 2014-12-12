@@ -12,7 +12,7 @@
         <%= f.label :account, class: "right inline"%>
      </div>
      <div class="small-9 columns">
-        <%= select(:payment, :account, options_for_select(account_selector, @payment.account.id), {include_blank: 'None'}) %>
+        <%= select(:payment, :account, options_for_select(account_selector, @payment.account.try(:id)), {include_blank: 'None'}) %>
      </div> 
    </div>
    <div class="row">   

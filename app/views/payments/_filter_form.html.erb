@@ -1,0 +1,14 @@
+<%= form_tag(filter_search_payments_path, html: { class: "custom"}) do %>
+   <div class="row">
+     <div class="small-3 columns">
+       <%= label_tag :account_filter, nil, class: "right inline"%>
+     </div>
+     <div class="small-4 columns">
+         <%= select_tag(:acct_filter, options_for_select(account_selector), :include_blank => true, :prompt => "Select an account") %>
+     </div> 
+     <div class="small-5 columns">
+       <%= submit_tag 'Search', :class => 'button small' %>
+     </div> 
+   </div>
+<% end %>
+

@@ -4,7 +4,12 @@
       <label>New Payment</label>
    <% end %>
    <%= link_to(payments_path, class: "item") do %>
-      <i class="fi-dollar"></i>
+      <i class="fi-dollar-bill"></i>
       <label>Payments</label>
    <% end %>
+   <%= link_to(filter_list_payments_path, class: "item", remote: true) do %>
+      <i class="fi-zoom-out"></i>
+      <label>filter</label>
+   <% end %>
+   
 </div>

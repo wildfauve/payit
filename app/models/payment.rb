@@ -10,6 +10,12 @@ class Payment
   field :amt_cents, type: Integer
   field :due_date, type: Date
   
+  #scope :for_account, ->(acct) {account.find(acct)}
+
+  def self.for_account(acct)
+    a = Account.find(acct)
+    a.payments
+  end
 
   def create_me(pay: nil)
     update_attrs(pay: pay)

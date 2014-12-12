@@ -1,7 +1,7 @@
 class PaymentsController < ApplicationController
   
   def index
-    @payments = Payment.all
+    @payments = Payment.all.desc(:due_date)
   end
   
   def new
@@ -24,6 +24,15 @@ class PaymentsController < ApplicationController
     @payment.update_me(pay: params[:payment])
   end
   
+  
+  def filter_list
+    #@filter = Payment.filter_list
+  end
+  
+  def filter_search
+    @payments = Payment.for_account(params[:acct_filter])
+    render 'index'
+  end
   
   
   # Events
