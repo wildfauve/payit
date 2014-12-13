@@ -1,0 +1,13 @@
+<h5 class="text-center"><i class="fi-calendar"></i> <%= pay.due_date%></h5>
+<h5 class="subheader text-center"><%= pay.account.payee.name%></h5>
+<h6 class="text-center"><%= pay.account.name%></h6>
+<h6 class="text-center"><%= number_to_currency(pay.amt)%></h6>
+<% if pay.reminder %>
+   <p class="text-center"><i class="fi-flag"></i> <%= pay.reminder%></p>
+<% end %>
+<%= link_to "Edit", edit_payment_path(pay), class: "button small"%>
+<% if pay.payment_paid %>
+   <p class="text-center"><i class="fi-check"></i> Paid</p>
+<% else %>
+   <%= link_to "Paid", paid_payment_path(pay), method: :put, class: "button small"%>
+<% end %>

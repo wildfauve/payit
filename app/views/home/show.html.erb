@@ -2,7 +2,7 @@
    <div class="icon-bar large-vertical four-up">
       <%= link_to("#", class: "item") do %>
          <i class="fi-widget"></i>
-         <label><%= @current_user_proxy.name%></label>
+         <label><%= @current_user_proxy.name if @current_user_proxy %></label>
       <% end %>
       <%= link_to(notes_path, class: "item") do %>
          <i class="fi-page-multiple"></i>

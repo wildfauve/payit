@@ -1,30 +1,19 @@
-<table>
-  <thead>
-    <tr>
-      <th>Amount</th>
-      <th>Payee</th>
-      <th>Due Date</th>      
-      <th>Action</th>
-    </tr>
-  </thead>
-   <tbody>
-      <% @payments.each do |pay| %>
-         <tr>
-            <td>
-               <%= number_to_currency(pay.amt)%>
-            </td>
-            <td>
-               <%= pay.account.payee.name%>
-               <div class="label"><%= pay.account.name%></div>
-            </td>
-            <td>
-               <%= pay.due_date%>
-            </td>
-            <td>
-               <%= link_to "edit", edit_payment_path(pay), class: "button small"%>
-            </td>            
-         </tr>
-      <% end %>     
-   </tbody>
-</table>
-
+<% rows = (@payments.count / 5) + 1 %>
+<% (1..rows).each do |row|  %>
+   <div class="row">
+      <div class="small-11 columns end">
+         <ul class="large-block-grid-5">
+            <% (0..4).each do |item| %>
+               <% indx = ((row - 1) * 5) + item %>
+              <li>
+                 <% if @payments[indx] %>
+                    <div class="panel">
+                       <%= render partial: "payment_panel", locals: {pay: @payments[indx]}%>
+                    </div>
+                  <% end%>
+              </li>
+            <% end %>
+         </ul>
+      </div>
+   </div>
+<% end %>

@@ -9,32 +9,54 @@ class Payment
   
   field :amt_cents, type: Integer
   field :due_date, type: Date
+  field :reminder, type: Date
+  field :payment_paid, type: Boolean
+  field :payment_time, type: Time
   
-  #scope :for_account, ->(acct) {account.find(acct)}
+  scope :all_unpaid, -> {where(payment_paid: nil).asc(:due_date)}
 
   def self.for_account(acct)
     a = Account.find(acct)
     a.payments
   end
 
-  def create_me(pay: nil)
-    update_attrs(pay: pay)
+  def create_me(pay: nil, user: nil)
+    update_attrs(pay: pay, user: user)
     self.save
     publish(:successful_payment_save_event, self)
   end
   
-  def update_me(pay: nil)
-    update_attrs(pay: pay)
+  def update_me(pay: nil, user: nil)
+    update_attrs(pay: pay, user: user)
     self.save
     publish(:successful_payment_save_event, self)
   end
   
   
-  def update_attrs(pay: nil)
+  def update_attrs(pay: nil, user: nil)
     self.amt = pay[:amt]
     self.due_date = pay[:due_date]
     self.account = Account.find(pay[:account])
+    if pay[:reminder].present?
+      self.reminder = pay[:reminder]
+      Note.new(user_proxy: user).create_note(payment: self)
+    end    
+  end
+  
+  def paid
+    self.payment_paid = true
+    self.payment_time = Time.now
+    self.save
+    publish(:successful_payment_paid_event, self)    
+  end
+  
+  def title
+    "Payment: " + "#{self.account.payee.name}"
   end  
+  
+  def note
+    "#{self.amt}"
+  end
 
   def amt=(amt)
     if /^[\d]+(\.[\d]+){0,1}$/ === amt.gsub(/\$/, "")

@@ -16,6 +16,9 @@ Rails.application.routes.draw do
         get 'filter_list'
         post 'filter_search'
       end
+      member do
+        put 'paid'
+      end
     end
     
     

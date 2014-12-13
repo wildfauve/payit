@@ -1,7 +1,7 @@
 class PaymentsController < ApplicationController
   
   def index
-    @payments = Payment.all.desc(:due_date)
+    @payments = Payment.all_unpaid
   end
   
   def new
@@ -11,7 +11,7 @@ class PaymentsController < ApplicationController
   def create
     @payment = Payment.new
     @payment.subscribe self
-    @payment.create_me(pay: params[:payment])
+    @payment.create_me(pay: params[:payment], user: @current_user_proxy)
   end
   
   def edit
@@ -21,7 +21,7 @@ class PaymentsController < ApplicationController
   def update
     @payment = Payment.find(params[:id])
     @payment.subscribe self
-    @payment.update_me(pay: params[:payment])
+    @payment.update_me(pay: params[:payment], user: @current_user_proxy)
   end
   
   
@@ -34,10 +34,20 @@ class PaymentsController < ApplicationController
     render 'index'
   end
   
+  def paid
+    @payment = Payment.find(params[:id])
+    @payment.subscribe self
+    @payment.paid
+  end
+  
   
   # Events
   
   def successful_payment_save_event(pay)
+    redirect_to payments_path
+  end
+
+  def successful_payment_paid_event(pay)
     redirect_to payments_path
   end
   

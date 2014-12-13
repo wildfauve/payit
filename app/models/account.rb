@@ -24,6 +24,7 @@ class Account
   
   def update_attrs(acct: nil)
     self.name = acct[:name]
+    save
   end  
   
 end
