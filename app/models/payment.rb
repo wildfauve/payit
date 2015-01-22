@@ -14,6 +14,7 @@ class Payment
   field :payment_time, type: Time
   
   scope :all_unpaid, -> {where(payment_paid: nil).asc(:due_date)}
+  scope :all_paid, -> {ne(payment_paid: nil).asc(:due_date)}
 
   def self.for_account(acct)
     a = Account.find(acct)

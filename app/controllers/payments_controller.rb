@@ -1,7 +1,11 @@
 class PaymentsController < ApplicationController
   
   def index
-    @payments = Payment.all_unpaid
+    if params[:filter].present?
+      @payments = Payment.all_paid
+    else
+      @payments = Payment.all_unpaid
+    end
   end
   
   def new

@@ -11,5 +11,9 @@
       <i class="fi-zoom-out"></i>
       <label>filter</label>
    <% end %>
+   <%= link_to(payments_path(filter: :paid), class: "item") do %>
+      <i class="fi-zoom-out"></i>
+      <label>Payments Paid</label>
+   <% end %>
    
 </div>

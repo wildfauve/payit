@@ -37,7 +37,6 @@ gem 'jquery-ui-rails'
 
 gem 'monetize'
 
-
 gem 'omniauth-evernote'
 
 gem 'evernote_oauth'
