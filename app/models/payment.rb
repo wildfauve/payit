@@ -33,6 +33,11 @@ class Payment
     publish(:successful_payment_save_event, self)
   end
   
+  def delete_me
+    self.destroy
+    publish(:successful_payment_delete_event, self)    
+  end
+  
   
   def update_attrs(pay: nil, user: nil)
     self.amt = pay[:amt]
