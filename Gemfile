@@ -26,6 +26,8 @@ gem 'spring',        group: :development
 
 gem 'mongoid', github: 'mongoid/mongoid'
 
+gem 'dotenv-rails'
+
 gem 'wisper'
 
 gem 'mc-settings'
@@ -41,9 +43,11 @@ gem 'omniauth-evernote'
 
 gem 'evernote_oauth'
 
+gem 'faraday'
+
 group :development do
   gem 'better_errors'
-  gem 'binding_of_caller'  
+  gem 'binding_of_caller'
   gem 'meta_request'
   gem 'pry'
   gem 'railroady'
@@ -61,4 +65,3 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-

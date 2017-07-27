@@ -7,7 +7,7 @@
             <i class="fi-page-edit size-36"></i>
          <% end %>
       </div>
-      <div class="large-3 columns">      
+      <div class="large-3 columns">
          <%= link_to paid_payment_path(pay), method: :put do %>
             <i class="fi-dollar-bill size-36"></i>
          <% end %>
@@ -24,5 +24,11 @@
 <h6 class="text-center"><%= pay.account.name%></h6>
 <h6 class="text-center"><%= number_to_currency(pay.amt)%></h6>
 <% if pay.reminder %>
-   <p class="text-center"><i class="fi-flag"></i> <%= pay.reminder%></p>
+   <p class="text-center">
+     <i class="fi-flag"></i>
+     <%= pay.reminder%>
+     <% if pay.reminder_status %>
+      <i class="fi-check"></i>
+     <% end %>
+   </p>
 <% end %>

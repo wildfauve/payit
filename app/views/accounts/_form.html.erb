@@ -8,6 +8,39 @@
      </div> 
    </div>
    <div class="row">
+     <div class="small-2 columns">
+       <%= f.label :account_number, class: "right inline", title: "account number", data: {tooltip: true } %>
+     </div>
+     <div class="small-10 columns">
+       <%= f.text_field :account_number, placeholder: "account number" %>
+     </div> 
+   </div>
+   <div class="row">
+     <div class="small-2 columns">
+       <%= f.label :particulars, class: "right inline", title: "something", data: {tooltip: true } %>
+     </div>
+     <div class="small-10 columns">
+       <%= f.text_field :particulars, placeholder: "particulars" %>
+     </div> 
+   </div>
+   <div class="row">
+     <div class="small-2 columns">
+       <%= f.label :code, class: "right inline", title: "code", data: {tooltip: true } %>
+     </div>
+     <div class="small-10 columns">
+       <%= f.text_field :code, placeholder: "code" %>
+     </div> 
+   </div>
+   <div class="row">
+     <div class="small-2 columns">
+       <%= f.label :reference, class: "right inline", title: "reference", data: {tooltip: true } %>
+     </div>
+     <div class="small-10 columns">
+       <%= f.text_field :reference, placeholder: "reference" %>
+     </div> 
+   </div>
+   
+   <div class="row">
      <div class="small-10 small-offset-2 columns">
        <%= f.submit 'Submit', :class => 'button small' %>
      </div>
