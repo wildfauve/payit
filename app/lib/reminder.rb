@@ -28,6 +28,7 @@ class Reminder
   # + time ;
 
   def handle()
+    binding.pry
     @response = parse(connection.get {|req| req.url ADD_METHOD, add_params })
   end
 

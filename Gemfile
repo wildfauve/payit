@@ -32,7 +32,7 @@ gem 'wisper'
 
 gem 'mc-settings'
 
-gem 'foundation-rails'
+gem 'foundation-rails', '5.4.3.1'
 gem 'foundation-icons-sass-rails'
 
 gem 'jquery-ui-rails'
